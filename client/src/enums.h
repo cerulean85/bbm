@@ -1,0 +1,125 @@
+#ifndef ENUMS_H
+#define ENUMS_H
+
+#include <QObject>
+class ENums : public QObject
+{
+    Q_OBJECT
+public:
+    ENums(QObject* parent = 0) : QObject(parent) { }
+    enum REG_CHECK { ALL_RIGHT, NO_SPECIAL_CHAR, NO_CAPITAL, NO_SMALL, NO_NUMBER, WRONG_LENGTH, WRONG_FORM, WRONG_BIRTH, NO_KOREAN, NO_KOREAN_INITIAL };
+    Q_ENUM(REG_CHECK)
+
+    enum NETWORK_RESULT
+    {
+        WAIT,
+        POSITIVE,
+        NAGATIVE,
+        NOT_LOGINED,
+        NOT_OPENED,
+        BLOCKED,
+        SERVER_ERROR,
+        PICKER
+    };
+    Q_ENUM(NETWORK_RESULT)
+
+    enum SNS_TYPE
+    {
+        SELF,
+        KAKAO,
+        FACEBOOK
+    };
+    Q_ENUM(SNS_TYPE)
+
+    enum OS_TYPE
+    {
+        _ANDROID,
+        IOS,
+        WINDOW,
+        MAC
+    };
+    Q_ENUM(OS_TYPE)
+
+    enum COMMENT_EVENT_TYPE
+    {
+        SHOW_ALL,
+        UPDATE,
+        DELETE,
+        NEW,
+        REPORT
+    };
+    Q_ENUM(COMMENT_EVENT_TYPE)
+
+    enum REFRESH_WORK
+    {
+        NONE,
+        WORKING_MAIN,
+        FINISHED_MAIN,
+
+        WORKING_SYSTEMNOTICE,
+        FINISHED_SYSTEMNOTICE,
+
+        WORKING_COURSENOTICE,
+        FINISHED_COURENOTICE,
+
+        WORKING_COURSENOTICECOMMENT,
+        FINISHED_COURSENOTICECOMMENT,
+
+        WORKING_CLIPCOMMENT,
+        FINISHED_CLIPCOMMENT,
+
+        WORKING_PUSHNOTICE,
+        FINISHED_PUSHNOTICE,
+
+        WORKING_EVENTLIST,
+        FINISHED_EVENTLIST,
+
+        WORKING_HISTORY,
+        FINISHED_HISTORY,
+
+        WORKING_CLIPLIST,
+        FINISHED_CLIPLIST,
+
+        WORKING_MYPAGE,
+        FINISHED_MYPAGE,
+
+        WORKING_COMMENT,
+        FINISHED_COMMENT
+
+    };
+    Q_ENUM(REFRESH_WORK)
+
+    enum SESSION_STATE
+    {
+        SESSION_WAIT,
+        NO_NEED,
+        NEED_AND_CONNECTED,
+        NEED_BUT_UNCONNECTED
+    };
+    Q_ENUM(SESSION_STATE)
+
+    enum REGION_TYPE
+    {
+        CLOSED_ALL_WINDOW,
+        WINDOW_ANSWER,
+        WINDOW_COMMENT,
+        WINDOW_QUIZ,
+        WINDOW_SHARE,
+        WINDOW_OPACITY,
+        CONTROLLER_COMMENT_INPUT,
+        CONTROLLER_WINDOW
+    };
+    Q_ENUM(REGION_TYPE)
+
+    enum ANDROID_BACK_BEHAVIOR_STATE
+    {
+        WAIT_BEHAVIOR,
+        REQUESTED_BEHAVIOR,
+        REQUESTED_BEHAVIOR_WEBVIEW,
+        FINISHED_BEHAVIOR
+    };
+    Q_ENUM(ANDROID_BACK_BEHAVIOR_STATE)
+
+};
+//Q_DECLARE_METATYPE(EENum*)
+#endif // ENUMS_H

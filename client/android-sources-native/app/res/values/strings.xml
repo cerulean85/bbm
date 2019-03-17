@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">이버봄</string>
+    <string name="app_name_en">ibeobom</string>
+    <string name="kakao_app_key">692f1e2e598cab18142f28bca3da2cee</string>
+    <string name="kakao_scheme">kakao692f1e2e598cab18142f28bca3da2cee</string>
+    <string name="kakaolink_host">kakaolink</string>
+    <string name="facebook_app_id">1943540989052487</string>
+    <string name="fb_login_protocol_scheme">fb1943540989052487</string>
+
+</resources>

@@ -1,0 +1,2 @@
+include ':app', ':libraries.gradle', ':libraries:test-common', ':libraries:kakaotalk', ':applications:kakao-open-android-navi-sample', ':libraries:friends', ':libraries:push', ':libraries:network', ':libraries:kakaostory', ':libraries:s2', ':applications:kakao-open-android-sdk-sample', ':libraries:kakaolink', ':applications:kakao-open-android-link-sample', ':libraries:message-template', ':libraries:usermgmt', ':libraries:auth', ':libraries:kakaonavi', ':libraries:util'
+project(':libraries.gradle').projectDir = new File('app/libraries/libraries.gradle')

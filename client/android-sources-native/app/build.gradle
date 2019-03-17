@@ -1,0 +1,107 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.3'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven {
+            url "https://maven.google.com"
+        }
+    }
+}
+
+apply plugin: 'com.android.application'
+
+repositories {
+    mavenCentral()
+    maven { url 'http://devrepo.kakao.com:8088/nexus/content/groups/public/' }
+}
+
+dependencies {
+    compile 'com.android.support:multidex:1.0.1'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.google.android.gms:play-services:11.4.0'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.facebook.android:facebook-android-sdk:4.35.0'
+    compile 'com.android.support:exifinterface:25.1.0'
+    compile 'org.apache.commons:commons-lang3:3.7'
+
+    // 카카오 로그인 sdk를 사용하기 위해 필요.
+    compile group: 'com.kakao.sdk', name: 'usermgmt', version: project.KAKAO_SDK_VERSION
+
+    // 카카오링크 sdk를 사용하기 위해 필요.
+    compile group: 'com.kakao.sdk', name: 'kakaolink', version: project.KAKAO_SDK_VERSION
+//
+//    // 카카오톡 sdk를 사용하기 위해 필요.
+//    compile group: 'com.kakao.sdk', name: 'kakaotalk', version: project.KAKAO_SDK_VERSION
+//
+//    // 카카오내비 sdk를 사용하기 위해 필요.
+//    compile group: 'com.kakao.sdk', name: 'kakaonavi', version: project.KAKAO_SDK_VERSION
+//
+//    // 카카오스토리 sdk를 사용하기 위해 필요.
+//    compile group: 'com.kakao.sdk', name: 'kakaostory', version: project.KAKAO_SDK_VERSION
+//
+//    // push sdk를 사용하기 위해 필요.
+//    compile group: 'com.kakao.sdk', name: 'push', version: project.KAKAO_SDK_VERSION
+
+}
+
+android {
+    defaultPublishConfig "release"
+    /*******************************************************
+     * The following variables:
+     * - androidBuildToolsVersion,
+     * - androidCompileSdkVersion
+     * - qt5AndroidDir - holds the path to qt android files
+     *                   needed to build any Qt application
+     *                   on Android.
+     *
+     * are defined in gradle.properties file. This file is
+     * updated by QtCreator and androiddeployqt tools.
+     * Changing them manually might break the compilation!
+     *******************************************************/
+
+    compileSdkVersion androidCompileSdkVersion.toInteger()
+
+    buildToolsVersion androidBuildToolsVersion
+
+    defaultConfig {
+        multiDexEnabled true
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = [qt5AndroidDir + '/src', 'src', 'java']
+            aidl.srcDirs = [qt5AndroidDir + '/src', 'src', 'aidl']
+            res.srcDirs = [qt5AndroidDir + '/res', 'res']
+            resources.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            assets.srcDirs = ['assets']
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    dexOptions {
+        javaMaxHeapSize = "4g"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt') , 'proguard-rules.pro'
+        }
+    }
+}

@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>font/NanumSquareBold.ttf</file>
+        <file>font/NanumSquareExtraBold.ttf</file>
+        <file>font/NanumSquareLight.ttf</file>
+        <file>font/NanumSquareRegular.ttf</file>
+        <file>font/NanumBarunGothic.ttf</file>
+    </qresource>
+</RCC>

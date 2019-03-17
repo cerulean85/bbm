@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<manifest package="com.codymonster.ibeobom" xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="0.0.1" android:versionCode="1" android:installLocation="auto">
+    <application android:icon="@drawable/ic_launcher" android:name="com.codymonster.ibeobom.GlobalApplication" android:label="@string/app_name" android:theme="@style/AppTheme.NoActionBar" android:hardwareAccelerated="true">
+        <activity android:fitsSystemWindows="true" android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|locale|fontScale|keyboard|keyboardHidden|navigation" android:name="com.codymonster.ibeobom.MainActivity" android:launchMode="singleTop" android:label="@string/app_name" android:screenOrientation="portrait">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data android:scheme="@string/kakao_scheme" android:host="@string/kakaolink_host"/>
+            </intent-filter>
+
+            <meta-data android:name="android.app.lib_name" android:value="-- %%INSERT_APP_LIB_NAME%% --"/>
+            <meta-data android:name="android.app.qt_sources_resource_id" android:resource="@array/qt_sources"/>
+            <meta-data android:name="android.app.repository" android:value="default"/>
+            <meta-data android:name="android.app.qt_libs_resource_id" android:resource="@array/qt_libs"/>
+            <meta-data android:name="android.app.bundled_libs_resource_id" android:resource="@array/bundled_libs"/>
+            <!-- Deploy Qt libs as part of package -->
+            <meta-data android:name="android.app.bundle_local_qt_libs" android:value="-- %%BUNDLE_LOCAL_QT_LIBS%% --"/>
+            <meta-data android:name="android.app.bundled_in_lib_resource_id" android:resource="@array/bundled_in_lib"/>
+            <meta-data android:name="android.app.bundled_in_assets_resource_id" android:resource="@array/bundled_in_assets"/>
+            <!-- Run with local libs -->
+            <meta-data android:name="android.app.use_local_qt_libs" android:value="-- %%USE_LOCAL_QT_LIBS%% --"/>
+            <meta-data android:name="android.app.libs_prefix" android:value="/data/local/tmp/qt/"/>
+            <meta-data android:name="android.app.load_local_libs" android:value="-- %%INSERT_LOCAL_LIBS%% --"/>
+            <meta-data android:name="android.app.load_local_jars" android:value="-- %%INSERT_LOCAL_JARS%% --"/>
+            <meta-data android:name="android.app.static_init_classes" android:value="-- %%INSERT_INIT_CLASSES%% --"/>
+            <!--  Messages maps -->
+            <meta-data android:value="@string/ministro_not_found_msg" android:name="android.app.ministro_not_found_msg"/>
+            <meta-data android:value="@string/ministro_needed_msg" android:name="android.app.ministro_needed_msg"/>
+            <meta-data android:value="@string/fatal_error_msg" android:name="android.app.fatal_error_msg"/>
+            <meta-data android:value="@integer/google_play_services_version" android:name="com.google.android.gms.version"/>
+            <!--  Messages maps -->
+            <!-- Splash screen -->
+            <!--
+            <meta-data android:name="android.app.splash_screen_drawable" android:resource="@drawable/logo"/>
+            -->
+            <!-- Splash screen -->
+        </activity>
+
+        <activity android:name=".KakaoSignupActivity" android:label="@string/app_name">
+            <meta-data android:name="android.app.lib_name" android:value="-- %%INSERT_APP_LIB_NAME%% --"/>
+        </activity>
+        <meta-data android:name="com.kakao.sdk.AppKey" android:value="@string/kakao_app_key"/>
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+
+        <receiver android:name=".GcmBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+                <category android:name="com.codymonster.ibeobom"/>
+            </intent-filter>
+        </receiver>
+        <service android:name="com.codymonster.ibeobom.GcmIntentService" android:exported="false" android:permission="android.permission.BIND_JOB_SERVICE"/>
+
+<provider android:name="android.support.v4.content.FileProvider" android:authorities="com.codymonster.ibeobom.provider" android:exported="false" android:grantUriPermissions="true">
+    <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/provider_paths"/>
+</provider>
+
+    </application>
+    <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="26"/>
+    <supports-screens android:largeScreens="true" android:normalScreens="true" android:anyDensity="true" android:smallScreens="true"/>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <permission android:name="com.codymonster.ibeobom.permission.C2D_MESSAGE" android:protectionLevel="signature"/>
+    <permission android:name="com.codymonster.ibeobom.READ_CONTENT"/>
+    <permission android:name="com.codymonster.ibeobom.WRITE_CONTENT"/>
+    <uses-permission android:name="com.codymonster.ibeobom.permission.C2D_MESSAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+
+
+</manifest>
